@@ -1,0 +1,31 @@
+.main-container {
+    width: 800px;
+    height: 1125px;
+    background-color: azure;
+    justify-content: center;
+    border: solid black 1px;
+    border-style: dotted;
+}
+
+.header-name {
+    margin-top: 3rem;
+}
+
+.address-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.address-customer {
+    background-color: #ffefd5;
+}
+
+.address-user {
+    background-color: #ffefd5;
+    margin-right: 30px;
+}
+
+.document-control-container {
+    display: flex;
+    justify-content: space-between;
+}

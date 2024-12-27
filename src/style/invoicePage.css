@@ -1,0 +1,91 @@
+.invoice-container {
+    width: 800px;
+    height: 1125px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .invoice-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .invoice-footer {
+    display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 20px;
+  }
+  
+  .invoice-header h1,
+  .invoice-header h2 {
+    margin: 0;
+  }
+  
+  .company-info {
+    text-align: left;
+  }
+  
+  .invoice-info {
+    text-align: right;
+  }
+  
+  .invoice-main {
+    margin-top: 20px;
+  }
+  
+  .customer-info {
+    display: inline-block;
+    justify-content: center;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .invoice-table th,
+  .invoice-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .invoice-table th {
+    text-align: center; /* Center text in the header */
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .invoice-table td:nth-child(1), /* Column: # */
+  .invoice-table td:nth-child(4), /* Column: ราคา */
+  .invoice-table td:nth-child(5) { /* Column: จำนวน */
+    text-align: center;
+  }
+  
+  .invoice-table td:nth-child(2), /* Column: สินค้า */
+  .invoice-table td:nth-child(3) { /* Column: รายละเอียด */
+    text-align: left;
+  }
+  
+  .invoice-table td:nth-child(6) { /* Column: รวม */
+    text-align: right;
+  }
+  
+  
+  .invoice-footer .totals {
+    text-align: right;
+    justify-content: flex-end;
+  }
+  
+  .invoice-footer .signature {
+    text-align: center;
+  width: 100%; /* Center signature horizontally */
+  margin-top: 20px; /* Ensure spacing from totals */
+  }
+  
