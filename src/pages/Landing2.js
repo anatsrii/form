@@ -3,6 +3,7 @@ import cloudIcon from "../assets/cloud.svg"
 import trackingIcon from "../assets/eye_tracking.svg"
 import invoiceIcon from "../assets/receipt.svg"
 import securityIcon from "../assets/security.svg"
+import { Link, Navigate } from "react-router"
 
 
 function Landing2 () {
@@ -18,7 +19,7 @@ function Landing2 () {
         <ul>
           <li><a href="#features">Features</a></li>
           <li><a href="#login">Login</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><Link to={'/contact'}>Contact</Link></li>
         </ul>
       </nav>
     </header>
@@ -52,7 +53,7 @@ function Landing2 () {
       <div className="feature card">
         <img src={cloudIcon} alt="cloud icon" />
         <h3>Cloud-Based</h3>
-        <p>Access your bills and invoices anytime, anywhere with secure cloud storage.</p>
+        <p>Access your document anytime anywhere with cloud storage.</p>
       </div>
       <div className="feature card">
         <img src={securityIcon} alt="security icon" />
@@ -64,7 +65,7 @@ function Landing2 () {
 
     {/* footer */}
     <footer className="footer">
-      <p>&copy; 2024 InvoiceApp. All Rights Reserved.</p>
+      <p>&copy; 2024 YourBill. All Rights Reserved.</p>
     </footer>
 
     </div>

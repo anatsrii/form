@@ -1,0 +1,126 @@
+/* Container Layout */
+.container {
+  display: flex;
+  height: 100vh;
+  background-color: #f9f9f9;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #2f3e46;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar ul li:hover {
+  background-color: #52616b;
+}
+
+/* Main Content */
+.mainContent {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Profile Section */
+.profileSection {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.profileSection img {
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.profileSection h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.profileSection p {
+  color: #6c757d;
+}
+
+.profileSection .stats p {
+  margin: 5px 0;
+  text-align: left;
+}
+
+.profileSection .stats{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Account Settings */
+.settingsSection {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.settingsSection form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.settingsSection form label {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.settingsSection form input {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.settingsSection form button {
+  grid-column: span 2;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.settingsSection form button:hover {
+  background-color: #0056b3;
+}
