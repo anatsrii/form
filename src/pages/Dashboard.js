@@ -1,9 +1,10 @@
 import React from 'react';
 import '../style/dashboard.css'; 
 import Sidebar from '../components/Sidebar';
-import ProfileCard from '../components/ProfileCard';
-import AccountSettings from '../components/AccountSettings';
 import { AccountSettingsProvider } from '../context/AccountSettingsContext.js';
+import Stats from '../components/Stats.js';
+import UserProfile from '../components/UserProfile.js';
+import UserSettings from '../components/UserSettings.js';
 
 const Dashboard = () => {
   return (
@@ -11,8 +12,9 @@ const Dashboard = () => {
       <div className="container">
         <Sidebar />
         <div className="mainContent">
-          <ProfileCard />
-          <AccountSettings />
+          <UserProfile />
+          <Stats />
+          <UserSettings />
         </div>
       </div>
     </AccountSettingsProvider>
