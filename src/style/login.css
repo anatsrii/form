@@ -1,0 +1,161 @@
+/* Login.css */
+/* body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  } */
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .login-container {
+      flex-direction: column-reverse;
+      margin-bottom: 20%;
+    }
+  
+    .login-card, .login-image {
+      max-width: 50%;
+      max-height: auto;
+    }
+    .login-card {
+      padding-top: 0;
+    }
+}
+  
+  .login-container {
+  font-family: 'BinancePlex', sans-serif;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  /* background-color: #f4f4f4; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  border-radius: 10px;
+  max-width: 650px;
+  max-height: 650px;
+  margin: 50px auto;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.5em;
+  font-weight: bold;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo-name {
+  font-family: 'BlackbagBold';
+  color: #303031;
+}
+
+.logo a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#yb {
+  font-family: 'Sarina';
+  font-size: xx-large;
+  color: #F5C64F;
+}
+
+.login-card, .login-image {
+  flex:1;
+  display: block;
+  min-width: 350px;
+  min-height: 350px;
+  max-width: 600px;
+  max-height: 600px;
+  padding: 20px;
+  background-color: #ffffff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Center text */
+}
+
+.login-card {
+  align-items: center;
+  padding-top: 20%;
+}
+
+.login-image {
+  background-image: url('../assets/invoice2.jpg');
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+.form-group input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-group input:focus {
+  outline: none;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background: #fcd535;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+::placeholder {
+  color: #ccc;
+}
+
+.login-button:hover {
+  background: #e3b500;
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.login-footer a {
+  color: #e3b500;
+  text-decoration: none;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
