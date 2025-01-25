@@ -2,11 +2,16 @@
 .container {
   display: flex;
   height: 100vh;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
   font-family: 'Arial', sans-serif;
 }
 
 /* Sidebar */
+a:-webkit-any-link {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
 .sidebar {
   width: 250px;
   background-color: #2f3e46;
@@ -29,15 +34,21 @@
 }
 
 .sidebar ul li {
+  color: white;
+  list-style-type: none;
+  list-style: none;
   margin-bottom: 15px;
   cursor: pointer;
   padding: 10px;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent */
 }
 
 .sidebar ul li:hover {
   background-color: #52616b;
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Main Content */
@@ -51,10 +62,10 @@
 
 /* Profile Section */
 .profileSection {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* border-radius: 8px; */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
   text-align: center;
 }
 
@@ -72,24 +83,40 @@
   color: #6c757d;
 }
 
-.profileSection .stats p {
-  margin: 5px 0;
-  text-align: left;
+/* Stats Section */
+.stats-container {
+  display: flex;
+  max-height: 150px;
+  background-color: #ffffff;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 1;
 }
 
-.profileSection .stats{
+.stat-card {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  height: 80px;
+  width: 80px;
+  gap: 10px;
+  margin: 15px;
+  padding: 20px;
+  border: 1px solid #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.stats p {
+  margin: 5px 0;
+  text-align: center;
+  color: #6c757d;
 }
 
 /* Account Settings */
 .settingsSection {
   background-color: #ffffff;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
 }
 
 .settingsSection form {
@@ -123,4 +150,37 @@
 
 .settingsSection form button:hover {
   background-color: #0056b3;
+}
+
+
+/* Search Section */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  margin-right: 10px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #45a049;
 }

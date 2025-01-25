@@ -1,0 +1,232 @@
+.invoice-container {
+  max-width: 800px;
+  height: 1125px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+  overflow-x: auto; /* Prevent table overflow */
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoice-header h1,
+.invoice-header h2 {
+  margin: 0;
+}
+
+.company-info {
+  text-align: left;
+}
+
+.invoice-info {
+  text-align: right;
+}
+
+.invoice-main {
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.invoice-main .btn-add-row {
+  display: inline-block;
+  border-radius: 55%;
+  border: none;
+  color: white;
+  background-color: #4CAF50;
+}
+.invoice-main .btn-add-row:hover {
+  cursor: pointer;
+}
+
+.customer-main {
+  display: grid;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.customer-info {
+  display: inline-block;
+  align-items: center;
+  text-align: left;
+}
+
+.customer-info p:first-of-type {
+  text-align: center;
+}
+
+  /* table section */
+.invoice-table {
+  width: calc(100% + 20px);
+  border-collapse: collapse;
+  margin-left: 0;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  table-layout: fixed; /* Ensure columns fit within container */
+  position: relative;
+  left: -25px;
+}
+
+.invoice-table th {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+.invoice-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.invoice-table th {
+  text-align: center; /* Center text in the header */
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+  /* button delete row table */
+.invoice-table button {
+  border-radius: 50%;
+  border: 1px;
+  text-align: center;
+  color: white;
+  background-color: #FF4F5A;
+  font-weight: 500;
+}
+
+.invoice-table button:hover {
+  cursor: pointer;
+}
+
+/* button delete row & sizing */
+.invoice-table th:nth-child(1) { /* Column: # */
+  border: none; /* Remove border for the first column */
+  background-color: transparent; /* Remove background for the first column */
+  width: 3%;
+}
+.invoice-table td:nth-child(1) { /* Column: # */
+  border: none; 
+  background-color: transparent; 
+  width: 3%;
+  align-items: center;
+}
+.invoice-table button:nth-of-type(1) {
+  text-align: center; 
+  align-items: center;
+  margin-right: 5px;
+}
+
+  /* กำหนดความกว้าง column สินค้าและรายละเอียด */
+  .invoice-table th:nth-child(3), /* Column: สินค้า */
+  .invoice-table th:nth-child(4) { /* Column: รายละเอียด */
+    width: 29%; /* Largest width for these columns */
+    text-align: center;
+  }
+  .invoice-table td:nth-child(3), /* Column: สินค้า */
+  .invoice-table td:nth-child(4) { /* Column: รายละเอียด */
+    width: 29%; /* Largest width for these columns */
+    text-align: left;
+  }
+  
+  /* กำหนดความกว้าง column  */
+.invoice-table th:nth-child(2), /* Column: รหัสสินค้า*/
+.invoice-table th:nth-child(5), /* Column: ราคา */
+.invoice-table th:nth-child(7) { /* Column: รวม */
+  width: 10%; /* Equal smaller widths for these columns */
+  text-align: center;
+}
+.invoice-table td:nth-child(2), /* Column: รหัสสินค้า */
+.invoice-table td:nth-child(5), /* Column: จำนวน */
+.invoice-table td:nth-child(7) { /* Column: รวม */
+  width: 10%; /* Equal smaller widths for these columns */
+  text-align: center;
+  align-items: center;
+}
+.invoice-table th:nth-child(6), /* Column: จำนวน */
+.invoice-table td:nth-child(6){
+  width: 10%;
+  text-align: center;
+  align-items: center;
+} 
+
+/* กำหนดตำแหน่งข้อความใน ตาราง input*/
+.invoice-table td:nth-of-type(2) input, /* Column: รหัสสินค้า */
+.invoice-table td:nth-of-type(5) input, /* Column: ราคา */
+.invoice-table td:nth-of-type(6) input { /* Column: จำนวน */
+text-align: center;
+align-items: center;
+}
+
+.invoice-table td:nth-of-type(7) input { /* Column: รวม */
+  text-align: right;
+}
+
+  /* Table input style */
+.invoice-table input {
+  border: none; 
+  width: 100%; /* Fit input to cell width */
+  box-sizing: border-box; /* Ensure padding doesn’t overflow */
+  background: transparent; /* Match table background */
+}
+
+
+/* text to Thai*/
+.text-thai {
+  align-items: right;
+  text-align: right;
+  margin: 10px 0 30px;
+  font-weight: bold;
+}
+
+
+
+/* invoice footer section */
+.invoice-footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.invoice-footer-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.invoice-footer .remark {
+  flex: 1;
+}
+
+.remark p {
+  padding-left: 10px;
+}
+
+.remark textarea {
+  margin-top: 30px;
+  min-width: 40%;
+  min-height: 40%;
+  border: none;
+  resize: none;
+}
+
+.invoice-footer .totals {
+  text-align: right;
+  justify-content: flex-end;
+  flex: 1;
+}
+.totals p:nth-of-type(2) input {
+  text-align: right;
+  width: 20%;
+  border: none;
+  font-size: 1rem;
+}
+
+.invoice-footer .signature {
+  text-align: center;
+  width: 100%; /* Center signature horizontally */
+  margin-top: 20px; 
+}

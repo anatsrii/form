@@ -27,7 +27,7 @@ function Login() {
     <div className="login-container">
     <div className="login-card">
         <div className="logo">
-        <h4><a href="#home" id="yb">YB</a></h4>
+        <h4><Link to={'/'} id="yb">YB</Link></h4>
         <a href="#home" id="logo-name">YourBill</a>
         </div>
       <form onSubmit={"Email checked"}>

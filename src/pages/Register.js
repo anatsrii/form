@@ -21,9 +21,9 @@ const Register = () => {
       <div className="login-card">
         <div className="logo">
           <h4>
-            <a href="#home" id="yb">
+            <Link to={'/'} id="yb">
               YB
-            </a>
+            </Link>
           </h4>
           <a href="#home" id="logo-name">
             YourBill

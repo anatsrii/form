@@ -1,56 +1,59 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import '../style/dashboard.css';
-import { AccountSettingsContext } from '../context/AccountSettingsContext.js';
+import {useSelector, useDispatch} from 'react-redux';
+import {setUserName, setUserLastName, setUserCompany, setUserEmail, setUserPhone, setUserAddress, setUserTaxId} from '../store/userReducer'
 
 const UserSettings = () => {
-  const { companyName, setCompanyName, name, setName, lastName, setLastName, phone, setPhone, email, setEmail, address, setAddress, edit, taxId, setTaxId } = useContext(AccountSettingsContext);
+
+  const dispatch = useDispatch();
+  const {userName, userLastName, userCompany, userAddress, userEmail, userPhone, userTaxId, editUserProfile} = useSelector((state) => state.user);
 
   const changeCompanyName = (e) => {
-    setCompanyName(e.target.value);
+    dispatch(setUserCompany(e.target.value));
   };
 
   const changeName = (e) => {
-    setName(e.target.value);
+    dispatch(setUserName(e.target.value));
   };
 
   const changeLastName = (e) => {
-    setLastName(e.target.value);
+    dispatch(setUserLastName(e.target.value));
   };
 
   const changePhone = (e) => {
-    setPhone(e.target.value);
+    dispatch(setUserPhone(e.target.value));
   };
 
   const changeEmail = (e) => {
-    setEmail(e.target.value);
+    dispatch(setUserEmail(e.target.value));
   };
 
   const changeAddress = (e) => {
-    setAddress(e.target.value);
+    dispatch(setUserAddress(e.target.value));
   };
 
   const changeTaxId = (e) => {    
-    setTaxId(e.target.value);
+    dispatch(setUserTaxId(e.target.value));
   }
 
   return (
-    <div className="settingsSection">
-      {edit && (
+      <div className="settingsSection">
+      {editUserProfile && (
         <form>
           <label>ชื่อบริษัท</label>
-          <input type="text" value={companyName} onChange={changeCompanyName} />
+          <input type="text" value={userCompany} onChange={changeCompanyName} />
           <label>ชื่อ</label>
-          <input type="text" value={name} onChange={changeName} />
+          <input type="text" value={userName} onChange={changeName} />
           <label>สกุล</label>
-          <input type="text" value={lastName} onChange={changeLastName} />
+          <input type="text" value={userLastName} onChange={changeLastName} />
           <label>เบอร์ติดต่อ</label>
-          <input type="text" value={phone} onChange={changePhone} />
+          <input type="text" value={userPhone} onChange={changePhone} />
           <label>Email</label>
-          <input type="email" value={email} onChange={changeEmail} />
+          <input type="email" value={userEmail} onChange={changeEmail} />
           <label>ที่อยู่</label>
-          <input type="text" value={address} onChange={changeAddress} />
+          <input type="text" value={userAddress} onChange={changeAddress} />
           <label>เลขผู้เสียภาษี</label>
-          <input type="text" value={taxId} onChange={changeTaxId} />
+          <input type="text" value={userTaxId} onChange={changeTaxId} />
           <button>Update</button>
         </form>
       )}

@@ -1,5 +1,4 @@
 import React  from "react";
-import { AccountSettingsProvider } from '../context/AccountSettingsContext.js';
 import Sidebar from "../components/Sidebar";
 import CustomerProfile from "../components/CustomerProfile.js";
 import CustomerSettings from "../components/CustomerSettings.js";
@@ -7,7 +6,6 @@ import CustomerSettings from "../components/CustomerSettings.js";
 
 function Customers() {
   return (
-    <AccountSettingsProvider>
       <div className="container">
         <Sidebar />
         <div className="mainContent">
@@ -15,7 +13,6 @@ function Customers() {
           <CustomerSettings />
         </div>
       </div>
-    </AccountSettingsProvider>
   );
 }
 

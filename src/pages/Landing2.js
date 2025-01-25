@@ -3,17 +3,22 @@ import cloudIcon from "../assets/cloud.svg"
 import trackingIcon from "../assets/eye_tracking.svg"
 import invoiceIcon from "../assets/receipt.svg"
 import securityIcon from "../assets/security.svg"
-import { Link, Navigate } from "react-router"
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Landing2 () {
+  const navigate = useNavigate()
+  const linkToLogin = () => {
+    return navigate("/login")
+  }
+
   return (
     <div className="main">
     {/* header*/}
       <header className="header">
       <div className="logo">
-        <h4><a href="#home" id="yb">YB</a></h4>
-        <a href="#home" id="logo-name">YourBill</a>
+        <h4><Link to={'/'} id="yb">YB</Link></h4>
+        <Link to={'/'} id="logo-name">YourBill</Link>
         </div>
       <nav>
         <ul>
@@ -29,7 +34,7 @@ function Landing2 () {
       <div className="left-sectiion">
       <h1>Effortless Bill & Invoice <br/>Management Online</h1>
       <p>Create send and track your invoices with ease <br />manage your business finances seamlessly.</p>
-      <button className="cta-button">Start Now</button>
+      <button className="cta-button" onClick={linkToLogin}>Start Now</button>
       </div>
       <div className="right-section">
          {/* This section already uses the background image */}
