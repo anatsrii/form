@@ -14,22 +14,22 @@ app.use(cors({
 
 // Delete User
 const deleteUser = app.delete('/delete/:id', async (req, res) => { 
+  const pool = await db.connect();
   try {
     const { id } = req.params;
     
     // Check if user exists
-    const [user] = await db.query('SELECT * FROM users WHERE id = ?', [id]);
+    const targetUser = await pool.query('SELECT * FROM users WHERE id = $1 ', [id]);
     
-    if (!user) {
+    if (targetUser.rows.length === 0) {
       return res.status(404).json({ message: 'User not found' });
     }
 
     // Delete user
-    await db.query('DELETE FROM users WHERE id = ?', [id]);
+    await pool.query('DELETE FROM users WHERE id = $1', [id]);
     
     return res.status(200).json({ 
-      message: 'User deleted successfully',
-      deletedUserId: id
+      message: `User ${targetUser.rows[0].email} deleted successfully`,
     });
 
   } catch (error) {
@@ -38,6 +38,8 @@ const deleteUser = app.delete('/delete/:id', async (req, res) => {
       message: 'Delete user failed', 
       error: error.message 
     });
+  }finally {
+    pool.release();
   }
 });
 
