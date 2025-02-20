@@ -1,23 +1,8 @@
-const express = require('express');
-const cors = require('cors');
 const db = require('../../config/dbConnect');
 const bcrypt = require('bcrypt');
-require('dotenv').config();
-const env = process.env;
-const bodyParser = require('body-parser');  
-
-
-const app = express();
-app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors({
-  credentials: true, // อนุญาตให้ส่ง Cookies/Headers Authentication ไปด้วย
-  origin: env.FRONTEND_URL // กำหนดให้เฉพาะ frontend ที่มี URL ตรงตามนี้เท่านั้นที่สามารถเข้าถึง API นี้ได้
-}))
 
 // Register User
-const registerUser = app.post('/register', async (req, res) => {
+const registerUser = async (req, res) => {
   const client = await db.connect();
   try {
     const { email, password, phone, role, status = 'active', last_login, first_name, last_name, sign_url } = req.body;
@@ -68,7 +53,7 @@ const registerUser = app.post('/register', async (req, res) => {
   } finally {
     client.release();
   }
-});
+};
 
 module.exports = { registerUser };
 

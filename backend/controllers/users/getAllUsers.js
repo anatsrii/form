@@ -1,20 +1,7 @@
-const express = require('express');
 const db = require('../../config/dbConnect');
-const cors = require('cors');
-require('dotenv').config();
-const env = process.env;
 
 
-const app = express();
-
-app.use(express.json());
-app.use(cors({
-  credentials: true,
-  origin: env.FRONTEND_URL
-}))
-
-
-const getAllUsers = app.get('/all', async (req, res) => {
+const getAllUsers = async (req, res) => {
   const pool = await db.connect();
   try {
     const allUser = await pool.query('SELECT * FROM users');
@@ -25,7 +12,6 @@ const getAllUsers = app.get('/all', async (req, res) => {
   }finally {
     pool.release();
   }     
-});
-
+};
 
 module.exports = { getAllUsers };

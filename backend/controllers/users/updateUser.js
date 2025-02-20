@@ -1,21 +1,8 @@
-const express = require("express");
-const cors = require("cors");
 const db = require("../../config/dbConnect");
 const bcrypt = require("bcrypt");
-require("dotenv").config();
-const env = process.env;
-
-const app = express();
-app.use(express.json());
-app.use(
-  cors({
-    credentials: true,
-    origin: env.FRONTEND_URL,
-  })
-);
 
 // Update User Information
-const updateUser = app.put("/update/:id", async (req, res) => {
+const updateUser = async (req, res) => {
   const client = await db.connect();
   try {
     const { id } = req.params;
@@ -62,10 +49,10 @@ const updateUser = app.put("/update/:id", async (req, res) => {
   } finally {
     client.release();
   }
-});
+};
 
 // Update Password// Update Password
-const updatePassword = app.put("/update-password/:id", async (req, res) => {
+const updatePassword = async (req, res) => {
   const client = await db.connect();
   try {
     const { id } = req.params;
@@ -115,6 +102,6 @@ const updatePassword = app.put("/update-password/:id", async (req, res) => {
   } finally {
     client.release();
   }
-});
+};
 
 module.exports = { updateUser, updatePassword };

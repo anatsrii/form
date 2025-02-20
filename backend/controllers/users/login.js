@@ -1,52 +1,50 @@
-const express = require('express');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const db = require('../../config/dbConnect');
-const cors = require('cors');
-require('dotenv').config();
-const env = process.env;
-
-const app = express();
-app.use(express.json());
-app.use(cors({
-  credentials: true,
-  origin: env.FRONTEND_URL
-}));
-
 // login user
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    
-    const [rows] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
-    const user = rows[0];
 
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+    if (!email || !password) {
+      return res.status(400).json({ message: 'กรุณากรอกอีเมลและรหัสผ่าน' });
     }
 
-    // Check if user is active
+    const client = await db.connect();
+    const result = await client.query('SELECT * FROM users WHERE email = $1', [email]);
+    client.release(); 
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ message: 'ไม่พบผู้ใช้ในระบบ' });
+    }
+
+    const user = result.rows[0];
+
     if (user.status !== 'active') {
-      return res.status(403).json({ message: 'Account is not active' });
+      return res.status(403).json({ message: 'บัญชีของคุณถูกปิดใช้งาน' });
     }
 
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      return res.status(400).json({ message: 'Invalid password' });
+      return res.status(400).json({ message: 'รหัสผ่านไม่ถูกต้อง' });
     }
 
-    // Remove password from response
-    delete user.password;
+    // Generate JWT Token
+    const token = jwt.sign(
+      { id: user.id, email: user.email, role: user.role },
+      process.env.SECRET,
+      { expiresIn: '12h' }
+    );
 
     return res.status(200).json({ 
-      message: 'Login successful',
-      user: user
+      message: 'เข้าสู่ระบบสำเร็จ',
+      token, 
+      user: { id: user.id, email: user.email, role: user.role }
     });
+
   } catch (error) {
-    console.error('Login failed:', error);
-    res.status(500).json({ 
-      message: "Login failed", 
-      error: error.message 
-    });
+    console.error('เกิดข้อผิดพลาดขณะเข้าสู่ระบบ:', error);
+    res.status(500).json({ message: "เกิดข้อผิดพลาด", error: error.message });
   }
 };
 

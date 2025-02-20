@@ -1,19 +1,7 @@
-const express = require ('express');
-const cors = require ('cors');
 const db = require ('../../config/dbConnect');
 
-require ('dotenv').config();
-const env = process.env;
-
-const app = express ();
-app.use(express.json());
-app.use(cors({
-  credentials: true,
-  origin: env.FRONTEND_URL
-}));
-
 // Delete User
-const deleteUser = app.delete('/delete/:id', async (req, res) => { 
+const deleteUser = async (req, res) => { 
   const pool = await db.connect();
   try {
     const { id } = req.params;
@@ -41,6 +29,6 @@ const deleteUser = app.delete('/delete/:id', async (req, res) => {
   }finally {
     pool.release();
   }
-});
+};
 
 module.exports = { deleteUser };
