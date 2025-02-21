@@ -1,20 +1,49 @@
 import { Link } from "react-router";
 import "../style/login.css";
-const Register = () => {
-  // const [username, setUsername] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
-  // const handleRegister = (e) => {
-  //   e.preventDefault();
-  //   if (password !== confirmPassword) {
-  //     alert('Passwords do not match!');
-  //     return;
-  //   }
-  //   // Handle registration logic here
-  //   console.log('Register submitted:', { username, email, password });
-  // };
+const Register = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+
+  const registerHandler = async (e) => {
+    e.preventDefault();
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      alert("รูปแบบของ Email ไม่ถูกต้อง");
+      return;
+    }
+    if (password.length < 8) {
+      alert("Password ต้องมีความยาวอย่างน้อย 8 ตัวอักษร");
+      return;
+    }
+    if (password !== confirmPassword) {
+      alert("Password and Confirm password do not match");
+      return;
+    }
+    try {
+      const response = await axios.post("http://localhost:5000/api/user/register", {
+        email: email,
+        password: password,
+        role: "user",
+      });
+
+      if (response.status === 201) {
+        navigate("/login");
+        alert("ลงทะเบียนสำเร็จ");
+      }
+
+      
+    } catch (error) {
+      console.error(error);
+      alert("ลงทะเบียนไม่สำเร็จ");
+    }
+  }
+
 
   return (
     <div className="login-container">
@@ -29,7 +58,7 @@ const Register = () => {
             YourBill
           </a>
         </div>
-        <form onSubmit={console.log("handle form register")}>
+        <form onSubmit={(e) => registerHandler}>
           {/* <div className="form-group">
               <label htmlFor="username">Username</label>
               <input
@@ -47,8 +76,8 @@ const Register = () => {
               type="email"
               id="email"
               placeholder="Enter your email"
-              // value={"emailValue"}
-              // onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -58,8 +87,8 @@ const Register = () => {
               type="password"
               id="password"
               placeholder="Enter your password"
-              // value={"passwordValue"}
-              // onChange={(e ) => setPassword(e.target.value)}
+              value={password}
+              onChange={(e ) => setPassword(e.target.value)}
               required
             />
           </div>
@@ -69,8 +98,8 @@ const Register = () => {
               type="password"
               id="confirmPassword"
               placeholder="Confirm your password"
-              // value={"confirmPasswordValue"}
-              // onChange={(e) => setConfirmPassword(e.target.value)}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
           </div>
@@ -84,7 +113,6 @@ const Register = () => {
           </p>
         </div>
       </div>
-  
     </div>
   );
 };
