@@ -6,9 +6,16 @@ import { useState } from "react";
 
 function Login() {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState();
   const navigate = useNavigate();
 
-  const CheckEmail = async (e) => {
+  const checkValue = (e) => {
+    console.log(e.target.value);
+    setEmail(e.target.value);
+    console.log(`check useSelector: ${email}`);
+  };
+  
+  const CheckEmail =  async (e) => {
     e.preventDefault();
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailPattern.test(email)) {
@@ -47,14 +54,31 @@ function Login() {
               id="email"
               value={email}
               placeholder="Enter your email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => checkValue(e)}
               required
             />
           </div>
+      
+          <div className="form-group">
+            {/* <label>Password</label> */}
+            <input
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              id="password"
+              placeholder="Password"
+              required
+            ></input>
+          </div>
+     
+    
           <button type="submit" className="login-button">Next</button>
         </form>
         <div className="login-footer">
-          <p>ยังไม่มีบัญชีหรอ? <Link to="/register">สมัครเลย!</Link></p>
+        <p className="login-footer">
+          <Link to={"/forgot-password"}>ลืมรหัสผ่าน ?  &#128517;</Link>
+        </p>
+          <p>หรือว่ายังไม่มีบัญชีหรอ? <Link to="/register">สมัครเลย!</Link></p>
         </div>
       </div>
       <div className="login-image">
